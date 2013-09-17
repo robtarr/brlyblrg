@@ -1,4 +1,6 @@
 # brlyblrg
+![brlyblrg logo](docs/img/brlyblrg-logo.png "brlyblrg logo")
+
 
 ## What is this?
 
@@ -6,10 +8,11 @@ This is a simple blog engine using Ruby and Dropbox. Once you have given the app
 
 ## Getting started
 1. Fork the project
-2. Put your database info in development.env
+2. Put your database info in .env.example file and rename it .env
+3. Create your [Dropbox app](docs/CreateDropboxApp.pdf).
 3. Authenticate the app with Dropbox
 4. Write some blog posts
-5. foreman start -e development.env (Foreman is used to simply deploying to Heroku.)
+5. foreman start (Foreman is used to simply deploying to Heroku.)
 6. Profit
 
 ## Front-matter format

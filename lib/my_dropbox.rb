@@ -34,7 +34,6 @@ class MyDropbox
       end
 
       @client = DropboxClient.new(access_token)
-
       puts "You are logged in. Looking for things to post..."
     end
   end
@@ -46,6 +45,7 @@ class MyDropbox
 
   def check_changed_files
     cursor = @db.read("dropbox", "delta_cursor")
+
     delta = @client.delta(cursor)
     puts delta.inspect
     delta["entries"].each do |entry|
