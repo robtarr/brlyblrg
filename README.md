@@ -3,8 +3,8 @@
 
 
 ## What is this?
-
 This is a simple blog engine using Ruby and Dropbox. Once you have given the app permission to access your Dropbox account, it will create /Apps/Blog-Drop/. It will read markdown files in this folder and save them to the posts table of your database.
+
 
 ## Getting started
 1. Fork the project
@@ -15,8 +15,8 @@ This is a simple blog engine using Ruby and Dropbox. Once you have given the app
 5. foreman start (Foreman is used to simply deploying to Heroku.)
 6. Profit
 
-## Front-matter format
 
+## Front-matter format
 ```YAML
  # ---
  # title: Post Title
@@ -25,6 +25,7 @@ This is a simple blog engine using Ruby and Dropbox. Once you have given the app
  # hashtag: usedfortwittercomments
  # ---
 ```
+
 
 ## To Do
 1. Create a web interface for authenticating production app with Dropbox
