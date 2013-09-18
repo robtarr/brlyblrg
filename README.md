@@ -22,9 +22,15 @@ This is a simple blog engine using Ruby and Dropbox. Once you have given the app
  # title: Post Title
  # description: post Description
  # permalink: this-is-a-unique-key
- # hashtag: usedfortwittercomments
  # ---
 ```
+The only front-matter that is required is the `permalink`. It uses this as the unique key to identify posts. The other front-matter keys should match the columns in your posts table, as it will try to insert/update whatever it finds.
+
+Required fields in the `posts` table are:
+
+- permalink
+- body
+- filename
 
 
 ## To Do
