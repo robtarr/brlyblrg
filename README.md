@@ -6,14 +6,26 @@
 This is a simple blog engine using Ruby and Dropbox. Once you have given the app permission to access your Dropbox account, it will create /Apps/Blog-Drop/. It will read markdown files in this folder and save them to the posts table of your database.
 
 
-## Getting started
+## Getting started locally
 1. Fork the project
 2. Put your database info in .env.example file and rename it .env
 3. Create your [Dropbox app](docs/CreateDropboxApp.pdf).
 3. Authenticate the app with Dropbox
 4. Write some blog posts
 5. foreman start (Foreman is used to simply deploying to Heroku.)
-6. Profit
+
+
+## Deploying to Heroku
+1. Get it running locally
+2. Set Heroku ENV variables:
+  - heroku config:set APP_KEY=999999999999999
+  - heroku config:set APP_SECRET=999999999999999
+  - heroku config:set DATABASE_URL=[DB connection string]
+3. git push heroku master
+4. heroku run lib/blryblrg.rb
+5. Follow the instructions.
+6. Write some blog posts.
+7. Profit.
 
 
 ## Front-matter format
@@ -33,10 +45,6 @@ Required fields in the `posts` table are:
 - permalink
 - body
 - filename
-
-
-## To Do
-1. Create a web interface for authenticating production app with Dropbox
 
 
 ## Legal Stuff
