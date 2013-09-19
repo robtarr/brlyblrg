@@ -48,7 +48,7 @@ class DB
   def update_access_token(token)
     dataset = @db[:dropbox].where(:id => 1)
     if dataset.first.nil?
-      dataset.insert({access_token: token, created_at: Time.now, updated_at: Time.now})
+      dataset.insert({id: 1, access_token: token, created_at: Time.now, updated_at: Time.now})
     else
       dataset.update({access_token: token, updated_at: Time.now})
     end
