@@ -16,6 +16,7 @@ class MyDropbox
       puts "already logged in!"
     else
       access_token = @db.read("dropbox", "access_token")
+
       if access_token.nil?
         app_key = ENV['APP_KEY']
         app_secret = ENV['APP_SECRET']
@@ -65,9 +66,14 @@ class MyDropbox
     out, metadata = @client.get_file_and_metadata path
     fm = FrontMatter.new(:unindent => true, :as_yaml => true)
     options = YAML.load fm.extract(out)[0]
-    options["body"] = markdown.render(out.gsub(/# ---.*# ---\n*/m,""))
-    options["filename"] = path
-    @db.update_post options
-    puts "Updated '#{options["title"]}'"
+
+    if options["draft"] == true
+      @db.remove_post path
+    else
+      options["body"] = markdown.render(out.gsub(/# ---.*# ---\n*/m,""))
+      options["filename"] = path
+      @db.update_post options
+      puts "Updated '#{options["title"]}'"
+    end
   end
 end
