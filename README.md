@@ -50,6 +50,8 @@ Required fields in the `posts` table are:
 ## TODO
 - Check options against Posts Schema before insert/update and remove any options that are not in the schema
 - Setup gh-pages branch
+- Copy assets to configurable location
+- Improve configuration options (DB table name, etc.)
 
 ## Legal Stuff
 The MIT License (MIT)
