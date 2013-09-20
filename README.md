@@ -49,7 +49,7 @@ Required fields in the `posts` table are:
 
 ## TODO
 - Check options against Posts Schema before insert/update and remove any options that are not in the schema
-
+- Setup gh-pages branch
 
 ## Legal Stuff
 The MIT License (MIT)
