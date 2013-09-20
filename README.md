@@ -38,13 +38,17 @@ This is a simple blog engine using Ruby and Dropbox. Once you have given the app
 ```
 The only front-matter that is required is the `permalink`. It uses this as the unique key to identify posts. The other front-matter keys should match the columns in your posts table, as it will try to insert/update whatever it finds.
 
-Putting `draft: true` in the front matter will prevent this post from being added to the DB. If it is added to an existing post, that post wil be removed from the DB, but left in the Dropbox folder.
+Putting `status: draft` in the front matter will prevent this post from being added to the DB. If it is added to an existing post, that post wil be removed from the DB, but left in the Dropbox folder.
 
 Required fields in the `posts` table are:
 
 - permalink
 - body
 - filename
+
+
+## TODO
+- Check options against Posts Schema before insert/update and remove any options that are not in the schema
 
 
 ## Legal Stuff

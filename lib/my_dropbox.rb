@@ -50,10 +50,12 @@ class MyDropbox
     delta = @client.delta(cursor)
     puts delta.inspect
     delta["entries"].each do |entry|
-      if entry[1].nil?
-        @db.remove_post entry[0]
-      else
-        parse_post entry[0]
+      if entry[0].match /.*\.(?:md|markdown)/
+        if entry[1].nil?
+          @db.remove_post entry[0]
+        else
+          parse_post entry[0]
+        end
       end
     end
     @db.update_cursor delta["cursor"]
@@ -67,11 +69,12 @@ class MyDropbox
     fm = FrontMatter.new(:unindent => true, :as_yaml => true)
     options = YAML.load fm.extract(out)[0]
 
-    if options["draft"] == true
+    if options["status"] == "draft"
       @db.remove_post path
     else
       options["body"] = markdown.render(out.gsub(/# ---.*# ---\n*/m,""))
       options["filename"] = path
+      options.delete "status"
       @db.update_post options
       puts "Updated '#{options["title"]}'"
     end
