@@ -52,6 +52,9 @@ Required fields in the `posts` table are:
 - Setup gh-pages branch
 - Copy assets to configurable location
 - Improve configuration options (DB table name, etc.)
+- TDD version 1
+
+
 
 ## Legal Stuff
 The MIT License (MIT)
