@@ -67,6 +67,10 @@ Special thanks to all those who have helped:
 - @neilrenicker
 
 
+## Release History
+See [CHANGELOG](CHANGELOG).
+
+
 ## Legal Stuff
 The MIT License (MIT)
 
