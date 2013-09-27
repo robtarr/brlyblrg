@@ -48,12 +48,23 @@ Required fields in the `posts` table are:
 
 
 ## TODO
+
+Want to contribute?
+
 - Check options against Posts Schema before insert/update and remove any options that are not in the schema
 - Setup gh-pages branch
 - Copy assets to configurable location
 - Improve configuration options (DB table name, etc.)
-- TDD version 1
+- Add tests and clean up code
 
+
+## Collaborators
+
+Special thanks to all those who have helped:
+
+- @asimpson
+- @yock
+- @neilrenicker
 
 
 ## Legal Stuff

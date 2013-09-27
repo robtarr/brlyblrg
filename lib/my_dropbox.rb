@@ -1,6 +1,8 @@
 require 'dropbox_sdk'
 require 'front_matter'
 require 'redcarpet'
+
+require_relative 'fileio'
 require_relative 'db'
 
 # You must use your Dropbox App key and secret to use the API.
@@ -45,38 +47,28 @@ class MyDropbox
   end
 
   def check_changed_files
+    posts = []
+    assets = []
     cursor = @db.read("dropbox", "delta_cursor")
-
     delta = @client.delta(cursor)
-    puts delta.inspect
+
     delta["entries"].each do |entry|
       if entry[0].match /.*\.(?:md|markdown)/
-        if entry[1].nil?
-          @db.remove_post entry[0]
-        else
-          parse_post entry[0]
-        end
+        posts << entry
+      else
+        assets << entry
       end
     end
     @db.update_cursor delta["cursor"]
+
+    return posts, assets
   end
 
-  def parse_post path
-    markdown_opts = [:autolink => true, :space_after_headers => true]
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, *markdown_opts)
+  def get_file path
+    @client.get_file(path)
+  end
 
-    out, metadata = @client.get_file_and_metadata path
-    fm = FrontMatter.new(:unindent => true, :as_yaml => true)
-    options = YAML.load fm.extract(out)[0]
-
-    if options["status"] == "draft"
-      @db.remove_post path
-    else
-      options["body"] = markdown.render(out.gsub(/# ---.*# ---\n*/m,""))
-      options["filename"] = path
-      options.delete "status"
-      @db.update_post options
-      puts "Updated '#{options["title"]}'"
-    end
+  def get_metadata path
+    @client.get_file_and_metadata path
   end
 end
