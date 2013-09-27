@@ -47,6 +47,12 @@ Required fields in the `posts` table are:
 - filename
 
 
+## Asset server
+
+When the app starts up it will also start up a simple we server on port 9292 that will copy an serve p any files from the public folder in your brlyblrg Dropbox folder.
+
+*Note: this has not been deployed/tested on Heroku yet*
+
 ## TODO
 
 Want to contribute?
